@@ -1,0 +1,299 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+/* backgrounds */
+.bg-1 {
+    background: rgb(221,22,59);
+    background: linear-gradient(90deg, rgba(252,58,94,1) 100%, rgba(221,22,59,1) 0%);
+}
+
+.bg-2 {
+    background: #eaeaea;
+}
+
+/* menu */
+.g-menu-state,
+.g-menu-toggle,
+.g-sub-menu {
+    display: none;
+}
+
+.g-menu-toggle {
+    padding: 0.5em;
+    position: relative;
+}
+
+.g-menu-icon {
+    bottom: 0;
+    font-family: Icons;
+    margin: 0;
+    padding: 1em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.g-menu-toggle .g-menu-icon::after {
+    content: "\e09b";
+}
+
+.g-menu-state:checked ~ .g-menu-toggle .g-menu-icon::after {
+    content: "\e0db";
+}
+
+.g-main-menu,
+.g-sub-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.g-sub-menu {
+    background: #fff;
+}
+
+.g-main-menu li {
+    border-bottom: 1px solid #ddd;
+}
+
+.g-main-menu li:last-child {
+    border-bottom: none;
+}
+
+.g-menu-item,
+.g-main-menu a {
+    color: #444;
+    display: block;
+    padding: 1em;
+    position: relative;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+}
+
+.g-menu-icon,
+.g-menu-item:hover,
+.g-menu-item:focus,
+.g-main-menu a:hover,
+.g-main-menu a:focus {
+    background: rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.g-main-menu .active {
+    color: #d23600;
+    border-bottom-color: #d23600;
+}
+
+@media (max-width:575px) {
+    .g-sub-menu {
+        margin-left: 1em;
+    }
+
+    .g-sub-menu li:first-child {
+        border-top: 1px solid #ddd;
+    }
+
+    .g-menu-item .g-menu-icon::after,
+    .g-menu-state ~ a .g-menu-icon::after {
+        content: "\e0aa";
+    }
+
+    .g-menu-state:checked ~ .g-menu-item .g-menu-icon::after,
+    .g-menu-state:checked ~ a .g-menu-icon::after {
+        content: "\e09d";
+    }
+}
+
+@media (max-width:767px) {
+    .g-main-menu {
+        display: none;
+    }
+
+    .g-menu-toggle,
+    .g-menu-state:checked ~ .g-main-menu,
+    .g-menu-state:checked ~ .g-sub-menu {
+        display: block;
+    }
+
+    .g-menu-toggle .g-menu-icon {
+        bottom: unset;
+        padding: 1em;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width:576px) {
+    .g-menu-icon {
+        padding: 1em 0.5em;
+    }
+
+    .g-main-menu::after {
+        clear: both;
+        content: "";
+        display: block;
+    }
+
+    .g-main-menu li {
+        position: relative;
+    }
+
+    .g-main-menu > li {
+        border-bottom: none;
+        float: left;
+    }
+
+    .g-menu li:hover > .g-sub-menu {
+        display: block;
+    }
+
+    .g-sub-menu {
+        border: 1px solid #ddd;
+        left: 0;
+        min-width: 10em;
+        position: absolute;
+        top: 100%;
+        white-space: nowrap;
+        z-index: 1;
+    }
+
+    .g-sub-menu .g-sub-menu {
+        left: 100%;
+        top: 0;
+    }
+
+    .g-menu-item,
+    .g-menu-state ~ a {
+        padding-right: 2.5em;
+    }
+
+    .g-menu-item .g-menu-icon::after,
+    .g-menu-state ~ a .g-menu-icon::after {
+        content: "\e034";
+    }
+
+    .g-sub-menu .g-menu-item .g-menu-icon::after,
+    .g-sub-menu .g-menu-state ~ a .g-menu-icon::after {
+        content: "\e036";
+    }
+}
+
+/* image overlay */
+.img-overlay {
+    position: relative;
+    display: inline-block;
+}
+
+.img-overlay::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.img-hoverlay::before,
+.img-hoverlay > .icon {
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.img-hoverlay:hover::before,
+.img-hoverlay:hover > .icon {
+    opacity: 1;
+}
+
+.img-overlay::before,
+.img-overlay > .link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.img-overlay > .link {
+    color: transparent;
+    cursor: pointer;
+}
+
+.img-overlay > .icon {
+    position: absolute;
+    color: #fff;
+    font-size: 52px;
+    top: calc(50% - 26px);
+    left: calc(50% - 26px);
+}
+
+.img-overlay > .icon-sm {
+    font-size: 26px;
+    top: calc(50% - 13px);
+    left: calc(50% - 13px);
+}
+
+/* slide */
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px 25px;
+    box-sizing: content-box;
+}
+
+.slide-overlay .heading {
+    font-size: 40px;
+    height: 96px;
+    overflow: hidden;
+}
+
+.slide-overlay .desc {
+    font-size: 18px;
+    height: 162px;
+    overflow: hidden;
+}
+
+@media (max-width: 767px) {
+    .slide-overlay {
+        top: auto;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .slide-overlay .heading {
+        font-size: 36px;
+        height: 44px;
+    }
+
+    .slide-overlay .desc {
+        height: 54px;
+    }
+}
+
+@media (max-width: 575px) {
+    .slide-overlay .heading {
+        font-size: 26px;
+        height: 32px;
+    }
+
+    .slide-overlay .desc {
+        font-size: 16px;
+        height: 24px;
+    }
+}
+
+/* bootstrap override */
+.list-group-item.active {
+    background-color: #dd163b;
+    border-color: #dd163b;
+}
